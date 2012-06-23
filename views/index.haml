@@ -14,13 +14,17 @@
       %h2 Who should I contact today?
 
     %article
+      %form#search{method: "get", action: "/search", autocomplete: "off"}
+        %fieldset
+          %input{name: "query", type: "text", autofocus: "", placeholder: "enter your twitter username"}
 
     %footer
       %p
         Powered by
         <a href="http://www.ruby-lang.org/en/">Ruby</a>,
-        <a href="http://redis.io/">Redis</a>, and
-        <a href="http://www.sinatrarb.com/">Sinatra</a>.
+        <a href="http://redis.io/">Redis</a>,
+        <a href="http://www.sinatrarb.com/">Sinatra</a>,
+        and love.
 
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
     %script{src: "/dither.js"}
