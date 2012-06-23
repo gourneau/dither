@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  text-transform: lowercase;
+}
+
+body {
+  color: #516064;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+  margin: 0 auto 0 auto;
+  width: 800px;
+}
+
+a {
+  color: #B62F2F;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hgroup, article {
+  margin-bottom: 50px;
+}
+
+h1 {
+  color: #D1D9DC;
+  font-size: 102px;
+  letter-spacing: -7px;
+  margin-top: -15px;
+  margin-left: -4px;
+  margin-bottom: -25px;
+}
+
+h1 a {
+  color: #D1D9DC;
+}
+
+h1 a:hover {
+  color: #B62F2F;
+  text-decoration: none;
+}
+
+h2, h3 {
+  color: #959EA1;
+  font-size: 35px;
+  font-weight: 300;
+  letter-spacing: -2px;
+}
+
+footer {
+  padding-bottom: 3em;
+}
