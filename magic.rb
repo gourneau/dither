@@ -26,8 +26,8 @@ module Magic
 
     def from_twitter(request_token, oauth_token, oauth_verifier)
       access_token = request_token.get_access_token(oauth_verifier: oauth_verifier)
-      timeline = access_token.request(:get, 'http://api.twitter.com/1/statuses/user_timeline.json?count=200')
-      timeline
+      request = access_token.request(:get, 'http://api.twitter.com/1/statuses/user_timeline.json?count=200')
+      request.body
     end
 
     def magic(timeline)
