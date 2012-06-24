@@ -18,12 +18,12 @@ module Magic
     request_token.authorize_url
   end
 
-  def self.authenticate
+  def self.authenticate(oauth_token, oauth_secret)
     Twitter.configure do |config|
       config.consumer_key = CONSUMER_KEY
       config.consumer_secret = CONSUMER_SECRET
-      config.oauth_token = OAUTH_TOKEN
-      config.oauth_token_secret = OAUTH_SECRET
+      config.oauth_token = oauth_token
+      config.oauth_token_secret = oauth_secret
     end
   end
 

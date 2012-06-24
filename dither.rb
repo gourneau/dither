@@ -13,9 +13,12 @@ logger.level = Logger::INFO
 
 
 get '/' do
-  # haml :index
-  logger.info(params)
-  redirect Magic.get_oauth_url
+  if params.count == 0
+    redirect Magic.get_oauth_url
+  end
+
+  Magic.authenticate(params['oauth_token'], params['oauth_verifier'])
+  haml :index
 end
 
 
