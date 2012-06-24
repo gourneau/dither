@@ -8,7 +8,13 @@ Dither = {
       return false;
     }
 
-    $('#username').submit(this._username);
+    twttr.anywhere(function (T) {
+      T("#tbox").tweetBox({
+        height: 100,
+        width: 400,
+        defaultContent: "<YOUR DEFAULT TWEETBOX CONTENT HERE>"
+      });
+    });
 
     // We're now initialized.
     return this._initialized = true;

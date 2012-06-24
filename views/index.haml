@@ -15,6 +15,7 @@
 
     %article
       %img.twitter-share-button{src: "http://api.twitter.com/1/users/profile_image/#{@friend}" alt: "Friend"}
+      %div#tweet-box
 
     %footer
       %p
@@ -26,6 +27,4 @@
 
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
     %script{src: "/dither.js"}
-    :javascript
-      var friend = '#{@friend}';
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    %script{src: "http://platform.twitter.com/anywhere.js?id=0W95ajy4zYj4C7qcjn1Tg&v=1"
