@@ -41,7 +41,7 @@ module Magic
         end
       end
 
-      mentions.to_a.sort_by { |username, score| score }.map { |username, score| username }
+      mentions.to_a.sort_by { |username, score| score }.map { |username, score| username }[0]
     end
   end
 end
