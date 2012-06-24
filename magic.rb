@@ -30,7 +30,7 @@ module Magic
       request.body
     end
 
-    def magic(timeline)
+    def neglected_friends(timeline)
       mentions = {}
       timeline.each_with_index do |tweet, index|
         if tweet['text'] =~ /(@[0-9A-Za-z]+)/
@@ -40,7 +40,7 @@ module Magic
           mentions[username] += score
         end
       end
-      mentions.to_a.sort_by { |username, score| score }.map { |username, score| username }[0]
+      mentions.to_a.sort_by { |username, score| score }.map { |username, score| username }
     end
   end
 end

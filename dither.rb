@@ -22,7 +22,15 @@ get '/' do
 
   timeline = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
   timeline = JSON.parse(timeline)
-  @friend = Magic.magic(timeline)
+  @friend = Magic.neglected_friends(timeline).first
 
   haml :index
+end
+
+get '/friends.json' do
+  content_type :json
+
+  timeline = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
+  timeline = JSON.parse(timeline)
+  Magic.neglected_friends(timeline)
 end
