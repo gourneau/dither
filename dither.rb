@@ -25,7 +25,7 @@ get '/' do
   mentions = Magic.magic(timeline)
 
   content_type :json
-  mentions.to_s
+  mentions.to_json
 
   # haml :index
 end
