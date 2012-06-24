@@ -21,7 +21,7 @@ get '/' do
   end
 
   response = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
-  logger.info(response)
+  logger.info(response.body)
   haml :index
 end
 
