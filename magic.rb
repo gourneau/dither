@@ -34,7 +34,9 @@ module Magic
       mentions = []
       timeline.each_with_index do |tweet, index|
         if tweet['text'] =~ /(@[0-9A-Za-z]+)/
-          mention = { username: $1, index: index }
+          divisor = 1 + index
+          score = timeline.size / divisor
+          mention = { username: $1, score: score }
           mentions << mention
         end
       end
