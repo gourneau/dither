@@ -25,10 +25,7 @@ get '/' do
 
   logger.info(user_info)
   puts user_info
-  content_type :json
-  user_info
-
-  # haml :index
+  haml :index
 end
 
 
