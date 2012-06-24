@@ -16,7 +16,6 @@ module Magic
     # puts 'OAuth Secret: ' + request_token.secret
     # puts 'OAuth URL: ' + request_token.authorize_url
     request_token
-    request_token.authorize_url
   end
 
   def self.from_twitter(request_token, oauth_token, oauth_verifier)
