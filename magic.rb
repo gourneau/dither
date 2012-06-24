@@ -31,7 +31,15 @@ module Magic
     end
 
     def magic(timeline)
-      timeline
+      mentions = []
+      timeline.each do |tweet|
+        if tweet.text =~ /[@A-Za-z]+/
+          # TODO: Do something with this username.
+          username = $1
+          mentions << username
+        end
+      end
+      mentions
     end
   end
 end

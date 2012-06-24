@@ -21,10 +21,11 @@ get '/' do
   end
 
   timeline = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
-  magic = Magic.magic(timeline)
+  timeline = JSON.parse(timeline)
+  mentions = Magic.magic(timeline)
 
   content_type :json
-  magic.to_s
+  mentions.to_s
 
   # haml :index
 end
