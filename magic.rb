@@ -18,8 +18,12 @@ module Magic
   def self.from_twitter(request_token, oauth_token, oauth_verifier)
     oauth_consumer = OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, site: 'http://api.twitter.com', request_endpoint: 'http://api.twitter.com', sign_in: true)
     access_token = request_token.get_access_token(oauth_verifier: oauth_verifier)
-    response = access_token.request(:get, "http://api.twitter.com/1/statuses/home_timeline.json?count=200")
-    response
+    timeline = access_token.request(:get, "http://api.twitter.com/1/statuses/user_timeline.json?count=200")
+    timeline
+  end
+
+  def self.magic(timeline)
+    timeline
   end
 end
 

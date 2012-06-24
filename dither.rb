@@ -20,11 +20,12 @@ get '/' do
     redirect session[:request_token].authorize_url
   end
 
-  response = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
-  @user_info = response.body
+  timeline = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
+  timeline = JSON.parse(timeline)
+  magic = Magic.magic(timeline)
 
   content_type :json
-  @user_info
+  magic.to_s
 
   # haml :index
 end
