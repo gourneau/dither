@@ -14,9 +14,6 @@
       %h2 Who should I contact today?
 
     %article
-      %form#username{method: "get", action: "/magic", autocomplete: "off"}
-        %fieldset
-          %input{name: "username", type: "text", autofocus: "", placeholder: "enter your twitter username"}
 
     %footer
       %p
@@ -28,3 +25,7 @@
 
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
     %script{src: "/dither.js"}
+
+    <script>
+      var user_info = #{user_info};
+    </script>

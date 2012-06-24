@@ -1,5 +1,4 @@
 require 'haml'
-require 'json'
 require 'logger'
 require 'rubygems'
 require 'sinatra'
@@ -22,17 +21,5 @@ get '/' do
 
   response = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
   user_info = JSON.parse(response.body)
-
-  logger.info(user_info)
-  puts user_info
-  haml :index
-end
-
-
-get '/magic' do
-  username = params['username']
-  json = { username: username }.to_json
-
-  content_type :json
-  json
+  haml :index, locals: { user_info: user_info }
 end
