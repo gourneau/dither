@@ -11,7 +11,7 @@ module Magic
 
   def self.get_oauth_url
     oauth_consumer = OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, site: 'http://api.twitter.com', request_endpoint: 'http://api.twitter.com', sign_in: true)
-    request_token = oauth_consumer.get_request_token
+    request_token = oauth_consumer.get_request_token(oauth_callback: 'http://olivebranch.herokuapp.com/')
     # puts 'OAuth Token: ' + request_token.token
     # puts 'OAuth Secret: ' + request_token.secret
     # puts 'OAuth URL: ' + request_token.authorize_url
