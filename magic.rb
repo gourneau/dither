@@ -40,12 +40,7 @@ module Magic
           mentions[username] += score
         end
       end
-
       mentions.to_a.sort_by { |username, score| score }.map { |username, score| username }[0]
     end
   end
-end
-
-
-if __FILE__ == $0
 end
