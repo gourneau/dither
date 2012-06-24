@@ -31,13 +31,13 @@ module Magic
     end
 
     def magic(timeline)
-      mentions = []
+      mentions = {}
       timeline.each_with_index do |tweet, index|
         if tweet['text'] =~ /(@[0-9A-Za-z]+)/
-          divisor = 1 + index
-          score = timeline.size / divisor
-          mention = { username: $1, score: score }
-          mentions << mention
+          username = $1
+          score = timeline.size / (1 + index)
+          mentions[username] ||= 0
+          mention[username] += score
         end
       end
       mentions
