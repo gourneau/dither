@@ -7,17 +7,21 @@ require 'sinatra'
 load 'magic.rb'
 
 
+enable :sessions
 set :haml, :format => :html5
+
 logger = Logger.new(STDOUT)
 logger.level = Logger::INFO
 
 
 get '/' do
   if params.count == 0
-    redirect Magic.get_oauth_url
+    session[:request_token] = Magic.to_twitter
+    redirect session[:request_token].authorize_url
   end
 
-  Magic.authenticate(params['oauth_token'], params['oauth_verifier'])
+  response = Magic.from_twitter(psession[:request_token], arams['oauth_token'], params['oauth_verifier'])
+  logger.info(response)
   haml :index
 end
 

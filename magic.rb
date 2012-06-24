@@ -9,13 +9,21 @@ module Magic
   CONSUMER_KEY = '0W95ajy4zYj4C7qcjn1Tg'
   CONSUMER_SECRET = 'bCFVFAWx0WS5NmPBhuxR5u3tiEnftYVXHpKHVB7xZbo'
 
-  def self.get_oauth_url
+  def self.to_twitter
     oauth_consumer = OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, site: 'http://api.twitter.com', request_endpoint: 'http://api.twitter.com', sign_in: true)
     request_token = oauth_consumer.get_request_token(oauth_callback: 'http://olivebranch.herokuapp.com/')
     # puts 'OAuth Token: ' + request_token.token
     # puts 'OAuth Secret: ' + request_token.secret
     # puts 'OAuth URL: ' + request_token.authorize_url
+    request_token
     request_token.authorize_url
+  end
+
+  def self.from_twitter(request_token, oauth_token, oauth_verifier)
+    oauth_consumer = OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, site: 'http://api.twitter.com', request_endpoint: 'http://api.twitter.com', sign_in: true)
+    access_token = request_token.get_access_token(oauth_verifier: oauth_verifier)
+    response = oauth_consumer.request(:get, '/account/verify_credentials.json', access_token, { :scheme => :query_string })
+    response
   end
 
   def self.authenticate(oauth_token, oauth_secret)
