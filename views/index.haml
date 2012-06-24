@@ -25,7 +25,5 @@
 
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
     %script{src: "/dither.js"}
-
-    <script>
-      var user_info = #{@friend};
-    </script>
+    %script
+      var friend = #{@friend};
