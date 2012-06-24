@@ -21,8 +21,14 @@ get '/' do
   end
 
   response = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
-  logger.info(response.body)
-  haml :index
+  user_info = JSON.parse(response.body)
+
+  logger.info(user_info)
+  puts user_info
+  content_type :json
+  user_info
+
+  # haml :index
 end
 
 
