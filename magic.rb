@@ -37,7 +37,7 @@ module Magic
           username = $1
           score = timeline.size / (1 + index)
           mentions[username] ||= 0
-          mention[username] += score
+          mentions[username] += score
         end
       end
       mentions
