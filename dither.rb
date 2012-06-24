@@ -20,6 +20,6 @@ get '/' do
   end
 
   response = Magic.from_twitter(session[:request_token], params['oauth_token'], params['oauth_verifier'])
-  user_info = JSON.parse(response.body)
+  user_info = response.body
   haml :index, locals: { user_info: user_info }
 end
