@@ -40,7 +40,8 @@ module Magic
           mentions[username] += score
         end
       end
-      mentions
+
+      mentions.to_a.sort_by { |username, score| score }.map { |username, score| username }
     end
   end
 end
