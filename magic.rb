@@ -18,7 +18,11 @@ module Magic
   def self.from_twitter(request_token, oauth_token, oauth_verifier)
     oauth_consumer = OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, site: 'http://api.twitter.com', request_endpoint: 'http://api.twitter.com', sign_in: true)
     access_token = request_token.get_access_token(oauth_verifier: oauth_verifier)
-    response = oauth_consumer.request(:get, '/account/verify_credentials.json', access_token, { :scheme => :query_string })
+
+    # response = oauth_consumer.request(:get, '/account/verify_credentials.json', access_token, { :scheme => :query_string })
+    # response
+
+    response = access_token.request(:get, "http://api.twitter.com/1/statuses/home_timeline.json")
     response
   end
 end
